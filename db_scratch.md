@@ -27,8 +27,8 @@ npx sequelize model:generate --name Like --attributes userId:integer,postId:inte
 npx sequelize seed:generate --name demo-user
 npx sequelize seed:generate --name seed_posts
 npx sequelize seed:generate --name seed_comments
-npx sequelize seed:generate --name seed_follows
 npx sequelize seed:generate --name seed_likes
+npx sequelize seed:generate --name seed_follows
 
 npx dotenv sequelize db:migrate
 
