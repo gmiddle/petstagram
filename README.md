@@ -1,7 +1,7 @@
 # Spacestagram
 ### - Spacestagram is place where people can post and comment on photos of all things related to space.
 
-### - Live link: NEED LINK HERE 
+### - Live link: https://spacestagram-fun.herokuapp.com/
 Please refer to Wiki pages for further documentation.
 
 ## Development
