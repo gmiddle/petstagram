@@ -5,15 +5,15 @@ function getRandomNum(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function randomPosts() {
-  const postOptions = [
-    "This is my favorite shot of space.",
-    "Every time I see this, it gives me chills",
-    "This is the first time I have seen this and I am super amazed",
+function randomComments() {
+  const commentOptions = [
+    "Wahoo!  That looks so fun!",
+    "When did this happen?",
+    "Awesome, nice work!",
     "Where did you go to see this?",
     "I remember the first time I saw this too.  Much wow.",
     "Space is so crazzzzzzy!.",
-    "This is the fifth time I have seen this, and it never gets old",
+    "I saw this same thing just the other day",
     "Is this where we are going this weekend?",
     "I wish I could go to space.",
     "Anyone have a seat on a rocket that can get me here?",
@@ -23,30 +23,30 @@ function randomPosts() {
     "Space is so freaking amazing!",
     "I could stare at these all day.",
   ];
-  let postNum = getRandomNum(0, postOptions.length);
-  return postOptions[postNum];
+  let commentNum = getRandomNum(0, commentOptions.length);
+  return commentOptions[commentNum];
 }
 
-const posts = [];
+const comments = [];
 
 for (let i = 0; i <= 30; i++) {
-  let newPost = {
-    description: `${randomPosts()}`,
-    imgUrl: "",
+  let newComment = {
+    content: `${randomComments()}`,
+    postId: faker.finance.amount(1, 30, 0),
     userId: faker.finance.amount(1, 24, 0),
     createdAt: faker.date.past(1),
     updatedAt: new Date()
   };
-  posts.push(newPost);
+  comments.push(newComment);
 };
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
 
-     await queryInterface.bulkInsert('Posts', posts, {});
+     await queryInterface.bulkInsert('Comments', comments, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Posts', null, {});
+    await queryInterface.bulkDelete('Comments', null, {});
   }
 };
