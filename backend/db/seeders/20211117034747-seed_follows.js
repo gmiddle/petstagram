@@ -6,42 +6,49 @@ const follows = [
   {
     followerId: 1,
     followedId: 2,
+    accepted: true,
     createdAt: faker.date.past(1),
     updatedAt: new Date()
   },
   {
     followerId: 1,
     followedId: 3,
+    accepted: true,
     createdAt: faker.date.past(1),
     updatedAt: new Date()
   },
   {
     followerId: 1,
     followedId: 4,
+    accepted: true,
     createdAt: faker.date.past(1),
     updatedAt: new Date()
   },
   {
     followerId: 1,
     followedId: 5,
+    accepted: true,
     createdAt: faker.date.past(1),
     updatedAt: new Date()
   },
   {
     followerId: 2,
     followedId: 1,
+    accepted: true,
     createdAt: faker.date.past(1),
     updatedAt: new Date()
   },
   {
     followerId: 2,
     followedId: 3,
+    accepted: true,
     createdAt: faker.date.past(1),
     updatedAt: new Date()
   },
   {
     followerId: 3,
     followedId: 1,
+    accepted: true,
     createdAt: faker.date.past(1),
     updatedAt: new Date()
   },
@@ -49,6 +56,7 @@ const follows = [
   {
     followerId: 3,
     followedId: 2,
+    accepted: true,
     createdAt: faker.date.past(1),
     updatedAt: new Date()
   },
