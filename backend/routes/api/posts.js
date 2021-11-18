@@ -1,6 +1,5 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { post } = require(".");
 const router = express.Router();
 const {Post} = require("../../db/models")
 
@@ -16,3 +15,7 @@ router.get("/",
         return res.json(posts)
     })
 )
+
+
+
+module.exports = router;
