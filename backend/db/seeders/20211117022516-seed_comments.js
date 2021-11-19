@@ -32,7 +32,7 @@ const comments = [];
 for (let i = 0; i <= 30; i++) {
   let newComment = {
     content: `${randomComments()}`,
-    postId: faker.finance.amount(1, 30, 0),
+    postId: faker.finance.amount(1, 20, 0),
     userId: faker.finance.amount(1, 24, 0),
     createdAt: faker.date.past(1),
     updatedAt: new Date()
