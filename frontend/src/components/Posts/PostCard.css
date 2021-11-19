@@ -1,0 +1,21 @@
+.post-container {
+    height: fit-content;
+    width: 860px;
+    border: 2px solid black;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+
+.postImg {
+  height: 200px;
+  width: 300px;
+  border-radius: 5px;
+}
