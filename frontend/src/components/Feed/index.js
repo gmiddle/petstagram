@@ -9,17 +9,15 @@ function Feed() {
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => Object.values(state.posts));
-//   const [currentPosts, setCurrentPosts] = useState(posts);
+
  
   useEffect(() => {
     dispatch(thunkGetAllPosts());
   }, [dispatch]);
 
 
-
   return (
     <>
-      
       <div className="feed-container">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />

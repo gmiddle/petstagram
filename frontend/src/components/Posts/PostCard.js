@@ -10,7 +10,7 @@ function PostCard( { post } ) {
         <div className="post-container"> Hello From the Post Card
         {/* <br></br>
         <Link key={post.id} to={`/posts/${post.id}`}>
-          <img className="postImg" src={post.imgUrl} alt=""></img>
+          <img className="post-img" src={post.imgUrl} alt=""></img>
         </Link>
         <br></br>
         <Link to={`/users/${post.userId}`}>
