@@ -41,8 +41,8 @@ function App() {
             <SignupFormPage />
           </Route>
 
-          <Route path='/posts' component={Feed}>
-            <PostCard />
+          <Route path='/posts' >
+            <Feed />
           </Route>
 
         </Switch>
