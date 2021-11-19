@@ -5,9 +5,10 @@ import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
-import { Modal } from './context/Modal';
+// import { Modal } from './context/Modal';
 import Feed from './components/Feed';
 import PostCard from './components/Posts/PostCard';
+import Modal from './components/Modal/Modal'
 
 
 
@@ -23,6 +24,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <Modal />
       {/* <button onClick={() => setShowModal(true)}>Modal</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
@@ -39,7 +41,7 @@ function App() {
             <SignupFormPage />
           </Route>
 
-          <Route path='/posts'>
+          <Route path='/posts' component={Feed}>
             <PostCard />
           </Route>
 

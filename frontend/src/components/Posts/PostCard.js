@@ -5,13 +5,13 @@ import "./PostCard.css";
 
 
 function PostCard( { post } ) {
+  
     
     return (
-        <div className="post-container"> Hello From the Post Card
+      <div className="post-container"> Hello From the Post Card
+
         {/* <br></br>
-        <Link key={post.id} to={`/posts/${post.id}`}>
           <img className="post-img" src={post.imgUrl} alt=""></img>
-        </Link>
         <br></br>
         <Link to={`/users/${post.userId}`}>
           <div>{post?.User?.username}</div>

@@ -19,9 +19,9 @@ function Feed() {
   return (
     <>
       <div className="feed-container">
-        {posts.map((post) => (
+        {posts.map((post) => 
           <PostCard key={post.id} post={post} />
-        ))}
+        )}
       </div>
     </>
   );

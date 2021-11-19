@@ -1,22 +1,22 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const router = express.Router();
-const {Post, Comment} = require("../../db/models")
+const {Post, User, Comment} = require("../../db/models")
 
 router.get("/",
     asyncHandler(async (req, res) => {
-        // const posts = await Post.findAll({
-        //     include: [
-        //         {
-        //             model: User,
-        //         },
-        //         {
-        //             model: Comment,
-        //         },
-        //     ]
-        // });
-        // return res.json(posts)
-        return <h1>Hello from /posts</h1>
+        const posts = await Post.findAll({
+            include: [
+                {
+                    model: User,
+                },
+                {
+                    model: Comment,
+                },
+            ]
+        });
+        return res.json(posts)
+        // return <h1>Hello from /posts</h1>
     })
 )
 
