@@ -35,4 +35,12 @@ router.get("/:id",
 );
 
 
+router.post(
+    "/",
+    asyncHandler(async(req, res) => {
+      const post = await Post.create(req.body);
+      return res.json(post);
+    })
+);
+
 module.exports = router;

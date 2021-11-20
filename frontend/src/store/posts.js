@@ -86,22 +86,36 @@ export const thunkGetAllPosts = () => async (dispatch) => {
     }
 }
 
-export const addPost = (post) => async (dispatch) => {
-  const { name, userId } = post;
-  const response = await csrfFetch("/api/posts/new", {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name,
-      userId
-    }),
-  });
-  const data = await response.json();
-  dispatch(add(data));
-  return data;
-}
+// export const createPostThunk = (post) => async (dispatch) => {
+//   const { name, userId } = post;
+//   const response = await csrfFetch("/api/posts", {
+//     method: "POST",
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       name,
+//       userId
+//     }),
+//   });
+//   const data = await response.json();
+//   dispatch(add(data));
+//   return data;
+// }
+
+export const createPostThunk = (payload) => async (dispatch) => {
+    const response = await csrfFetch("/api/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+  
+    if (response.ok) {
+      const newPost = await response.json();
+      dispatch(add(newPost));
+      return newPost;
+    }
+  };
 
 export const deletePost = (postId) => async (dispatch) => {
   const response = await csrfFetch(`/api/posts/delete/${postId}`, {
@@ -145,5 +159,7 @@ const postReducer = (state = {}, action) => {
       return state;
   }
 };
+
+
 
 export default postReducer;

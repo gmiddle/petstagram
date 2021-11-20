@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 import Feed from './components/Feed';
 import PostCard from './components/Posts/PostCard';
 import Modal from './components/Modal/Modal'
+import Footer from './components/Footer';
 
 
 
@@ -41,12 +42,13 @@ function App() {
             <SignupFormPage />
           </Route>
 
-          <Route path='/posts' >
+          <Route exact path='/posts' >
             <Feed />
           </Route>
 
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

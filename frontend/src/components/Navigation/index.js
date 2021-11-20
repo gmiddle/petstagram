@@ -7,6 +7,7 @@ import './Navigation.css';
 import { showModal, setCurrentModal } from '../../store/modal'
 import LoginFormPage from '../LoginFormPage';
 import SignupFormPage from '../SignupFormPage';
+import CreatePostModal from '../Posts/CreatePostModal';
 
 
 
@@ -26,7 +27,21 @@ function Navigation({ isLoaded }){
 
   let sessionLinks;
   if (sessionUser) {
-    sessionLinks = <ProfileButton user={sessionUser} />;
+    sessionLinks = (
+    <>  
+      <div className="nav-action-buttons">
+        <div>
+          <NavLink to="/">Home</NavLink>
+        </div>
+        <div>
+          <ProfileButton user={sessionUser} />
+        </div>
+      </div>
+      <div className="create-post-modal-container">
+        <CreatePostModal />
+      </div>
+    </>
+    );
   } else {
     sessionLinks = (
       <>
@@ -39,7 +54,7 @@ function Navigation({ isLoaded }){
   return (
     <ul>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/">Future Logo</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
