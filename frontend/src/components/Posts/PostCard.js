@@ -13,12 +13,16 @@ function PostCard( { post } ) {
       <br></br>
         <img className="post-img" src={post.imgUrl} alt=""></img>
       <br></br>
-      <Link to={`/users/${post.userId}`}>
-        <div>{post?.User?.username}</div>
-      </Link>
-      <br></br>
-      {post.description}
-      <br></br>
+      <div className="username-and-description-container">
+        <Link to={`/users/${post.userId}`}>
+          <div className="post-username">{post?.User?.username}</div>
+        </Link>
+        <br></br>
+        <div className="post-description">
+          {post.description}
+        </div>
+        <br></br>
+      </div>
     </div> 
   )
 }

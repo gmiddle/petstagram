@@ -43,4 +43,15 @@ router.post(
     })
 );
 
+router.put(
+    "/:id",
+    asyncHandler(async function (req, res) {
+      const id = req.params.id;
+      const post = await Post.findByPk(id);
+      await post.update(req.body)
+      return res.json(post);
+    })
+  );
+  
+
 module.exports = router;
