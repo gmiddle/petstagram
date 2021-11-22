@@ -7,7 +7,6 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 // import { Modal } from './context/Modal';
 import Feed from './components/Feed';
-import PostCard from './components/Posts/PostCard';
 import Modal from './components/Modal/Modal'
 import Footer from './components/Footer';
 
