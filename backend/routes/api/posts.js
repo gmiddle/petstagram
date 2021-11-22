@@ -35,12 +35,31 @@ router.get("/:id",
 );
 
 
-router.post(
-    "/",
+router.post("/",
     asyncHandler(async(req, res) => {
       const post = await Post.create(req.body);
       return res.json(post);
     })
 );
+
+router.put("/:id",
+    asyncHandler(async function (req, res) {
+      const id = req.params.id;
+      const post = await Post.findByPk(id);
+      await post.update(req.body)
+      return res.json(post);
+    })
+);
+
+router.delete("/:id",
+    asyncHandler(async function (req, res) {
+      const id = req.params.id;
+      const post = await Post.findByPk(id);
+      if (!post) throw new Error("Cannot find post");
+      await post.destroy(req.body);
+      return res.json(post);
+    })
+);
+  
 
 module.exports = router;

@@ -21,7 +21,6 @@ export const loadOnePost = (post) => async (dispatch) => {
   const res = await fetch(`/api/posts/${post}`);
   if (res.ok) {
     const onePost = await res.json();
-    console.log("ONEPOST",post)
     dispatch(getOnePost(onePost));
     return onePost;
   }
@@ -47,11 +46,7 @@ const singlePostReducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {
     case GET_ONE_POST: {
-        return action.post;
-    //   return {
-    //     ...state,
-    //     ...action.post,
-    //   };
+      return action.post;
     }
     case EDIT_POST:
       newState[action.post.id] = action.post;
