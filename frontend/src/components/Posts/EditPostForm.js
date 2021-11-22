@@ -1,23 +1,23 @@
 import { useState, } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editPost } from "../../store/posts";
-// import { loadOnePost } from "../../store/individualpost";
+import { editOnePost } from "../../store/singlePost";
+import { loadOnePost } from "../../store/singlePost";
 import { hideModal } from "../../store/modal";
-// import { getAllCommentsThunk } from "../../store/comments";
-import { getAllPostsThunk } from "../../store/posts";
+import { getAllCommentsThunk } from "../../store/comments";
+import { thunkGetAllPosts } from "../../store/posts";
 
 const EditPostForm = ({ setIsEditing }) => {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.individualPost);
   const userId = useSelector((state) => state.session.user.id);
-  const [editImageUrl, setEditImageUrl] = useState(post.imageUrl);
-  const [editCaption, setEditCaption] = useState(post.caption);
+  const [editImgUrl, setEditImgUrl] = useState(post.imgUrl);
+  const [editDescription, setEditDescription] = useState(post.description);
 
   const handleEdit = (e) => {
     e.preventDefault();
     const payload = {
-      imageUrl: editImageUrl,
-      caption: editCaption,
+      imgUrl: editImgUrl,
+      description: editDescription,
       userId: userId,
     };
     // const err = [];
@@ -32,8 +32,8 @@ const EditPostForm = ({ setIsEditing }) => {
     //     review: editReview,
     //     rating: editRating,
     //   };
-    dispatch(editPost(payload, post.id)).then(() =>
-      dispatch(getAllPostsThunk())
+    dispatch(editOnePost(payload, post.id)).then(() =>
+      dispatch(thunkGetAllPosts())
       
     );
 
@@ -58,30 +58,30 @@ const EditPostForm = ({ setIsEditing }) => {
             {/* <div className="fieldDiv">
             <label>Photo</label>
             <input
-              value={imageUrl}
+              value={imgUrl}
               type="file"
               id="input"
               multiple
-              onChange={(e) => setImageUrl(e.target.value)}
+              onChange={(e) => setImgUrl(e.target.value)}
             ></input>
           </div> */}
             <div>
               <label htmlFor="image">Image</label>
               <input
-                value={editImageUrl}
+                value={editImgUrl}
                 type="url"
                 name="image"
                 multiple
                 required
-                onChange={(e) => setEditImageUrl(e.target.value)}
+                onChange={(e) => setEditImgUrl(e.target.value)}
               ></input>
             </div>
             <div className="fieldDiv">
-              <label>Caption</label>
+              <label>Description</label>
               <input
                 type="text"
-                value={editCaption}
-                onChange={(e) => setEditCaption(e.target.value)}
+                value={editDescription}
+                onChange={(e) => setEditDescription(e.target.value)}
               />
             </div>
             <div className="createEventButton">

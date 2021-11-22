@@ -3,11 +3,15 @@ import thunk from 'redux-thunk';
 import session from './session'
 import postReducer from './posts';
 import modal from './modal';
+import singlePostReducer from './singlePost';
+import commentsReducer from './comments';
 
 
 const rootReducer = combineReducers({
   session,
   posts: postReducer,
+  individualPost: singlePostReducer,
+  comments: commentsReducer,
   modal,
 
 });

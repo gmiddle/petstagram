@@ -4,6 +4,8 @@ import CreatePostForm from "./CreatePostForm";
 import { useSelector } from "react-redux";
 // import { setCurrentModal } from "../../store/modal";
 
+
+
 function CreatePostModal() {
   const [showPostModal, setShowPostModal] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);

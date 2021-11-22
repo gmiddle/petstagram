@@ -41,24 +41,32 @@
 
 import { csrfFetch } from './csrf';
 
-const LOAD = "posts/LOAD";
-const ADD = "posts/ADD";
-const REMOVE = "posts/REMOVE";
+const LOAD_POST = "posts/LOAD_POST";
+const GET_ONE_POST = "posts/GET_ONE_POST";
+const ADD_POST = "posts/ADD_POST";
+const REMOVE_POST = "posts/REMOVE_POST";
 
 const load = (list) => ({
-  type: LOAD,
+  type: LOAD_POST,
   list,
 });
 
 const add = (post) => ({
-  type: ADD,
+  type: ADD_POST,
   post,
 });
 
 const remove = (postId) => ({
-  type: REMOVE,
+  type: REMOVE_POST,
   postId,
 });
+
+const getOnePost = (post) => {
+  return {
+    type: GET_ONE_POST,
+    post,
+  };
+};
 
 // export const getPosts = (userId) => async (dispatch) => {
 //   const response = await fetch(`/api/posts/user/${userId}`, {
@@ -73,18 +81,27 @@ const remove = (postId) => ({
 // }
 
 export const thunkGetAllPosts = () => async (dispatch) => {
-    const response = await csrfFetch("/api/posts", {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'}
-    })
+  const response = await csrfFetch("/api/posts", {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  })
 
-    if (response.ok) {
-        let posts = await response.json()
-    
-        dispatch(load(posts))
-        return posts
-    }
+  if (response.ok) {
+      let posts = await response.json()
+  
+      dispatch(load(posts))
+      return posts
+  }
 }
+
+export const loadOnePost = (post) => async (dispatch) => {
+  const res = await fetch(`/api/posts/${post}`);
+  if (res.ok) {
+    const onePost = await res.json();
+    dispatch(getOnePost(onePost));
+    return onePost;
+  }
+};
 
 // export const createPostThunk = (post) => async (dispatch) => {
 //   const { name, userId } = post;
@@ -143,15 +160,18 @@ export const editPost = (formData) => async (dispatch) => {
 
 const postReducer = (state = {}, action) => {
   switch (action.type) {
-    case LOAD:
+    case GET_ONE_POST: {
+      return action.post;
+    }
+    case LOAD_POST:
       const newState = {};
       for (let post of action.list) {
         newState[post.id] = post;
       }
       return newState;
-    case ADD:
+    case ADD_POST:
       return { ...state, [action.post.id]: action.post };
-    case REMOVE:
+    case REMOVE_POST:
       const newPosts = { ...state };
       delete newPosts[action.postId];
       return newPosts;

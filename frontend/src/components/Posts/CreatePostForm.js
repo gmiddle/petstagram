@@ -22,13 +22,6 @@ function CreatePostForm({ setShowPostModal }) {
       description,
       userId: ownerId,
     };
-
-    // const errors = [];
-    // if (!imageUrl)
-    //   errors.push("Please provide an image for your post.");
-    // if (!description) errors.push("Please provide a description of your event");
-    // setValErrors(errors);
-
     
     let createdPost = await dispatch(createPostThunk(payload))
 
@@ -40,7 +33,7 @@ function CreatePostForm({ setShowPostModal }) {
   };
 
   return (
-    <div className="createEventModal">
+    <div className="create-post-modal">
       <div className="modalHeader">
         <p>Create a Post</p>
       </div>
@@ -70,7 +63,7 @@ function CreatePostForm({ setShowPostModal }) {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className="createEventButton">
+          <div className="create-post-button">
             <button disabled={valErrors.length > 0} type="submit">
               Post
             </button>
