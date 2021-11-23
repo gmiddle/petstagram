@@ -25,7 +25,7 @@ function CreateCommentForm({post}) {
       postId: post.id
     };
 
-    console.log("this is the content before dispatch", content)
+    // console.log("this is the content before dispatch", content)
     dispatch(createCommentThunk(payload)).then(() => 
     dispatch(getAllCommentsThunk(post.id))).then(()=> 
     dispatch(thunkGetAllPosts()));

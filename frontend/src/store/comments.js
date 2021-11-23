@@ -41,7 +41,7 @@ export const getAllCommentsThunk = (id) => async (dispatch) => {
 };
 
 export const createCommentThunk = (payload) => async (dispatch) => {
-  console.log("this is the payload", payload)
+  // console.log("this is the payload", payload)
   const response = await csrfFetch(`/api/comments`, {
     method: "POST",
     headers: {
@@ -52,7 +52,7 @@ export const createCommentThunk = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const comment = await response.json();
-    console.log("this is the comment", comment)
+    // console.log("this is the comment", comment)
     dispatch(addComment(comment));
     
     return comment;
@@ -95,7 +95,7 @@ export default function commentsReducer(state = initialState, action) {
       });
       return { ...state, ...allComments };
     case ADD_COMMENT:
-      console.log("this is the action.comment", action.comment)
+      // console.log("this is the action.comment", action.comment)
       return {
         ...state,
         [action.comment.id]: action.comment,

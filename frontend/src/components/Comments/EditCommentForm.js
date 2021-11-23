@@ -13,8 +13,9 @@ const EditCommentForm = ({ comment }) => {
   const [isClicked, setIsClicked] = useState(false)
   const post = useSelector((state) => state.singlePost);
 //   const myComment = useSelector((state) => state.comments)
+  const ownerId = useSelector((state) => state.session.user.id);  
   
-console.log("SHOW", show)
+// console.log("SHOW", show)
   const updateSetShow = (e) => {
     show ? setShow(false) : setShow(true);
     setIsClicked(true)
@@ -46,13 +47,16 @@ console.log("SHOW", show)
 
   return (
     <div>
-      <button
-        className={`editButton ${show ? null : "hidden"}`}
-        onClick={updateSetShow}
-        // disabled={isClicked}
-      >
-        EDIT
-      </button>
+      {ownerId === comment.userId ? (
+                        
+        <button
+          className={`editButton ${show ? null : "hidden"}`}
+          onClick={updateSetShow}
+          // disabled={isClicked}
+        >
+          EDIT
+        </button>
+      ) : null }
 
       {isClicked && (
         <div>

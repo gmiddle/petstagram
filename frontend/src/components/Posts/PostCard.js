@@ -51,7 +51,7 @@ function PostCard({ post }) {
     const numberOfComments = post?.Comments?.length;
     const hasComments = numberOfComments > 0;
     const comments = useSelector((state) => state?.comments)
-    console.log("this is comments from PostCard.js", comments)
+    // console.log("this is comments from PostCard.js", comments)
     const lastComment = () => {
       // if (!hasComments) {
       //   return null;

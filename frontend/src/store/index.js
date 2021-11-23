@@ -5,6 +5,7 @@ import postReducer from './posts';
 import modal from './modal';
 import singlePostReducer from './singlePost';
 import commentsReducer from './comments';
+import users from './users';
 
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   singlePost: singlePostReducer,
   comments: commentsReducer,
   modal,
+  users
 
 });
 

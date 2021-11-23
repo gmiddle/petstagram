@@ -12,6 +12,7 @@ import "./CreateCommentFormModal.css";
 import { loadOnePost } from "../../store/singlePost";
 import { deleteCommentThunk } from "../../store/comments";
 import EditCommentForm from "./EditCommentForm";
+import { allUsers } from "../../store/users";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -25,10 +26,11 @@ function CreateCommentFormModal() {
   const commentsObj = useSelector((state) => state.comments)
   const allComments = Object.values(commentsObj)
   const comments = allComments.filter((comment) => comment.postId === post.id)
+  const users = useSelector((state) => state.users)
 
-  console.log("this is post from creatcommentformmodal", post)
-  // useEffect(() => dispatch(loadOnePost(post.id)), [dispatch])
-  console.log("this is comments from createcommentformmodal", comments)
+  // console.log("this is post from creatcommentformmodal", post)
+  // console.log("this is comments from createcommentformmodal", comments)
+  useEffect(() => dispatch(allUsers()), [dispatch])
 
   const deletePost = async () => {
     // await dispatch(getAllPostsThunk());
@@ -117,7 +119,14 @@ function CreateCommentFormModal() {
                   <div className="commentUserPhoto"></div>
                   <div>
                     <h3 className="commentUserName">
-                      <Link>commentUser</Link>
+                    {/* <Link
+                      className="userLink"
+                      to={`/users/${post?.userId}`}
+                      onClick={() => dispatch(hideModal())}
+                    >
+                      {post?.User?.username}
+                    </Link> */}
+                    {users[comment.userId]?.username}
                     </h3>
                     <span className="spanComment">{comment.content}</span>
                     {/* <div id={comment.id} onClick={editComment}>
@@ -125,13 +134,16 @@ function CreateCommentFormModal() {
                     </div> */}
                     <div>
                       <EditCommentForm comment={comment} />
-                      <div
-                        className="deleteComment"
-                        id={comment.id}
-                        onClick={deleteComment}
-                      >
-                        DELETE
-                      </div>
+                      {ownerId === comment.userId ? (
+                        <button
+                          className="deleteComment"
+                          id={comment.id}
+                          onClick={deleteComment}
+                        >
+                          DELETE
+                        </button>
+
+                      ) : null }
                     </div>
 
                     {/* <img className="editIcon" scr="https://res.cloudinary.com/dis83syog/image/upload/v1637344420/Countable/download_dhs0ho.png" alt=""></img> */}

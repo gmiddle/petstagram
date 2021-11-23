@@ -30,7 +30,7 @@ router.get("/:id",
       //       where: {postId: id}
       //     },
       });
-      console.log("this is post from posts api route", post)
+    //   console.log("this is post from posts api route", post)
       return res.json(post);
     })
 );

@@ -3,7 +3,7 @@ function Footer (){
   return (
     <div className="footer-div">
       <div className="social-media">
-        <p>Created by: Garrett Middleton</p>
+        <p>Created by Garrett Middleton</p>
         <a className="icons" href="https://github.com/gmiddle">
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
