@@ -18,16 +18,16 @@ function CreatePostModal() {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      // <button
-      //   className="create-post-button"
-      //   onClick={() => setShowPostModal(true)}
-      // >
-      //   Create Post
-      // </button>
-      <i
-        className="far fa-plus-square create-post-button"
+      <button
+        className="create-post-button"
         onClick={() => setShowPostModal(true)}
-      ></i>
+      >
+        Create Post
+      </button>
+      // <i
+      //   className="far fa-plus-square create-post-button"
+      //   onClick={() => setShowPostModal(true)}
+      // ></i>
     );
   }
 
