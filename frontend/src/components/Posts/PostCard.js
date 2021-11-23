@@ -58,7 +58,7 @@ function PostCard({ post }) {
       // }
 
       if (post.Comments) {
-        const comment = post?.Comments[post.Comments.length - 1];
+        const comment = post?.Comments[post?.Comments?.length - 1];
         return <div>{comment?.comment}</div>;
       }
     };
@@ -74,12 +74,12 @@ function PostCard({ post }) {
     };
 
   return (
-    <div className="posts">
+    <div className="post-container">
       <br></br>
       {/* <Link key={post.id} to={`/posts/${post.id}`}> */}
       <img
         onClick={handleSubmit}
-        className="postImage"
+        className="post-img"
         src={post.imgUrl}
         alt=""
       ></img>
