@@ -10,7 +10,7 @@ import commentsReducer from './comments';
 const rootReducer = combineReducers({
   session,
   posts: postReducer,
-  individualPost: singlePostReducer,
+  singlePost: singlePostReducer,
   comments: commentsReducer,
   modal,
 

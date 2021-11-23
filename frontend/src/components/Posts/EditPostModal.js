@@ -14,7 +14,7 @@ function EditPostModal({ post }) {
   const [postDetailModal, setPostDetailModal] = useState(false);
   const numberOfComments = post?.Comments?.length;
 
-  const allComments = useSelector((state) => state.individualPost.Comments);
+  const allComments = useSelector((state) => state.singlePost.Comments);
 //   console.log("ALL COMMENTS", allComments);
   const [comments, setComments] = useState({});
 

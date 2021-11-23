@@ -42,7 +42,7 @@
 import { csrfFetch } from './csrf';
 
 const LOAD_POST = "posts/LOAD_POST";
-const GET_ONE_POST = "posts/GET_ONE_POST";
+// const GET_ONE_POST = "posts/GET_ONE_POST";
 const ADD_POST = "posts/ADD_POST";
 const REMOVE_POST = "posts/REMOVE_POST";
 
@@ -61,12 +61,12 @@ const remove = (postId) => ({
   postId,
 });
 
-const getOnePost = (post) => {
-  return {
-    type: GET_ONE_POST,
-    post,
-  };
-};
+// const getOnePost = (post) => {
+//   return {
+//     type: GET_ONE_POST,
+//     post,
+//   };
+// };
 
 // export const getPosts = (userId) => async (dispatch) => {
 //   const response = await fetch(`/api/posts/user/${userId}`, {
@@ -94,14 +94,14 @@ export const thunkGetAllPosts = () => async (dispatch) => {
   }
 }
 
-export const loadOnePost = (post) => async (dispatch) => {
-  const res = await fetch(`/api/posts/${post}`);
-  if (res.ok) {
-    const onePost = await res.json();
-    dispatch(getOnePost(onePost));
-    return onePost;
-  }
-};
+// export const loadOnePost = (post) => async (dispatch) => {
+//   const res = await fetch(`/api/posts/${post}`);
+//   if (res.ok) {
+//     const onePost = await res.json();
+//     dispatch(getOnePost(onePost));
+//     return onePost;
+//   }
+// };
 
 // export const createPostThunk = (post) => async (dispatch) => {
 //   const { name, userId } = post;
@@ -160,9 +160,9 @@ export const editPost = (formData) => async (dispatch) => {
 
 const postReducer = (state = {}, action) => {
   switch (action.type) {
-    case GET_ONE_POST: {
-      return action.post;
-    }
+    // case GET_ONE_POST: {
+    //   return action.post;
+    // }
     case LOAD_POST:
       const newState = {};
       for (let post of action.list) {

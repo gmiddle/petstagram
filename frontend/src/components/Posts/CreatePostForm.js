@@ -41,8 +41,8 @@ function CreatePostForm({ setShowPostModal }) {
         <form onSubmit={handleSubmit}>
           <ul className="errors">
             {valErrors.length > 0
-              ? valErrors.map((valError) => <li key={valError}>{valError}</li>)
-              : null}
+              && valErrors.map((valError) => <li key={valError}>{valError}</li>)
+            }
           </ul>
           <div>
             <label htmlFor="image">Image</label>

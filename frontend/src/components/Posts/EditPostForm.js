@@ -8,7 +8,7 @@ import { thunkGetAllPosts } from "../../store/posts";
 
 const EditPostForm = ({ setIsEditing }) => {
   const dispatch = useDispatch();
-  const post = useSelector((state) => state.individualPost);
+  const post = useSelector((state) => state.singlePost);
   const userId = useSelector((state) => state.session.user.id);
   const [editImgUrl, setEditImgUrl] = useState(post.imgUrl);
   const [editDescription, setEditDescription] = useState(post.description);

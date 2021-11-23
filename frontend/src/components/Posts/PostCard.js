@@ -44,27 +44,34 @@ import { loadOnePost } from "../../store/singlePost";
 import { setCurrentModal } from "../../store/modal";
 import { showModal } from "../../store/modal";
 import CreateCommentFormModal from "../Comments/CreateCommentFormModal";
+import { getAllCommentsThunk } from "../../store/comments"
 
 function PostCard({ post }) {
     const dispatch = useDispatch()
     const numberOfComments = post?.Comments?.length;
     const hasComments = numberOfComments > 0;
+    const comments = useSelector((state) => state?.comments)
+    console.log("this is comments from PostCard.js", comments)
     const lastComment = () => {
-      if (!hasComments) {
-        return null;
-      }
+      // if (!hasComments) {
+      //   return null;
+      // }
 
       if (post.Comments) {
         const comment = post?.Comments[post.Comments.length - 1];
-        return <div>{comment.comment}</div>;
+        return <div>{comment?.comment}</div>;
       }
     };
 
-      const handleSubmit = async () => {
-        await dispatch(loadOnePost(post.id));
-        await dispatch(setCurrentModal(CreateCommentFormModal));
-        await dispatch(showModal());
-      };
+
+
+    useEffect(() => dispatch(getAllCommentsThunk(post.id)), [dispatch])
+
+    const handleSubmit = async () => {
+      await dispatch(loadOnePost(post.id));
+      await dispatch(setCurrentModal(CreateCommentFormModal));
+      await dispatch(showModal());
+    };
 
   return (
     <div className="posts">

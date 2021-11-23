@@ -15,8 +15,6 @@ function CommentCard({ post }) {
     const dispatch = useDispatch();
     // const [postDetailModal, setPostDetailModal] = useState(false);
     const numberOfComments = post?.Comments?.length;
-    
-    // const allComments = useSelector((state) => state.individualPost.Comments);
     const [comments, setComments] = useState({})
 
     // IFFE
@@ -34,6 +32,7 @@ function CommentCard({ post }) {
   };
 
   const anyComments = () => {
+    // console.log("this is post from commentCard", post.id)
     if (numberOfComments) {
       return `View all ${numberOfComments} comments`;
     } else {

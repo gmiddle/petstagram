@@ -41,6 +41,7 @@ export const getAllCommentsThunk = (id) => async (dispatch) => {
 };
 
 export const createCommentThunk = (payload) => async (dispatch) => {
+  console.log("this is the payload", payload)
   const response = await csrfFetch(`/api/comments`, {
     method: "POST",
     headers: {
@@ -51,7 +52,8 @@ export const createCommentThunk = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const comment = await response.json();
-    dispatch(addComment(comment.comment));
+    console.log("this is the comment", comment)
+    dispatch(addComment(comment));
     
     return comment;
   }
@@ -93,22 +95,23 @@ export default function commentsReducer(state = initialState, action) {
       });
       return { ...state, ...allComments };
     case ADD_COMMENT:
+      console.log("this is the action.comment", action.comment)
       return {
         ...state,
         [action.comment.id]: action.comment,
       };
-      case EDIT_COMMENT:
-        for (let post in newState) {
-          if (newState[post].id === action.comment.postId) {
-            for (let comment in newState[post].Comments) {
-              if (newState[post].Comments[comment].id === action.comment.id) {
-                newState[post].Comments[comment] = action.comment;
-              }
+    case EDIT_COMMENT:
+      for (let post in newState) {
+        if (newState[post].id === action.comment.postId) {
+          for (let comment in newState[post].Comments) {
+            if (newState[post].Comments[comment].id === action.comment.id) {
+              newState[post].Comments[comment] = action.comment;
             }
           }
         }
-  
-        return newState;
+      }
+
+      return newState;
     case DELETE_COMMENT: {
       const newState = { ...state };
       delete newState[action.comment];

@@ -21,6 +21,18 @@ router.get("/:id",
   })
 );
 
+// // get comments for postCard modal
+// router.get("/postCard/:id",
+//   asyncHandler(async (req, res) => {
+//     const id = req.params.id;
+//     const comments = await Comment.findAll({ 
+//       where: {postId: id} 
+//     })
+//     console.log("this is comments from posts api route", comments)
+//     return res.json(comments);
+//   })
+// );
+
 router.post("/",
   asyncHandler(async (req, res) => {
     const comment = await Comment.create(req.body);

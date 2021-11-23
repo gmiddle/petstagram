@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadOnePost } from "../../store/posts";
+import { loadOnePost } from "../../store/singlePost";
 import "./EditCommentForm.css";
 import { editCommentThunk } from "../../store/comments";
 
@@ -11,7 +11,7 @@ const EditCommentForm = ({ comment }) => {
 //   const userId = useSelector((state) => state.session?.user?.id);
   const [show, setShow] = useState(true);
   const [isClicked, setIsClicked] = useState(false)
-  const post = useSelector((state) => state.individualPost);
+  const post = useSelector((state) => state.singlePost);
 //   const myComment = useSelector((state) => state.comments)
   
 console.log("SHOW", show)
@@ -29,16 +29,20 @@ console.log("SHOW", show)
     e.preventDefault();
 
     const payload = {
-      comment: editComment,
-      id: comment.id
+      content: editComment,
+      id: comment.id,
+      postId: post.id
     };
-
+    console.log("this is the payload from the editcommentform", payload)
     await dispatch(editCommentThunk(payload));
     // comment= payload
     dispatch(loadOnePost(post.id))
     // dispatch(hideModal());
     updateSetShow();
+    
   };
+
+  console.log("this is the post from editcommentform", post.id)
 
   return (
     <div>

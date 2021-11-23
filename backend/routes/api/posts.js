@@ -23,13 +23,14 @@ router.get("/",
 router.get("/:id",
     asyncHandler(async (req, res) => {
       const id = req.params.id;
-      const post = await Post.findByPk(id, {
-        include: 
-          {
-            model: Comment,
-            where: {postId: id}
-          },
+      const post = await Post.findByPk( id, {
+      //   include: 
+      //     {
+      //       model: Comment,
+      //       where: {postId: id}
+      //     },
       });
+      console.log("this is post from posts api route", post)
       return res.json(post);
     })
 );

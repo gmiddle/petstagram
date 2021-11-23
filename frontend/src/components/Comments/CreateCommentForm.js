@@ -11,29 +11,25 @@ function CreateCommentForm({post}) {
   const dispatch = useDispatch();
 
   const ownerId = useSelector((state) => state.session.user.id);
-  
-    
-    
-  const [comment, setComment] = useState("");
+  const [content, setContent] = useState("");
 //   const comments = useSelector((state) => state.comments);
   const [valErrors, setValErrors] = useState([]);
-//   const posts = useSelector((state) => state.individualPost);
 //   const postId = posts[posts.id]?.Comments
       
   
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      comment,
+      content,
       userId: ownerId,
       postId: post.id
     };
 
-
+    console.log("this is the content before dispatch", content)
     dispatch(createCommentThunk(payload)).then(() => 
     dispatch(getAllCommentsThunk(post.id))).then(()=> 
     dispatch(thunkGetAllPosts()));
-    setComment("")
+    setContent("")
   
   };
 
@@ -45,8 +41,8 @@ function CreateCommentForm({post}) {
             <input
               placeholder="Add a comment..."
               type="text"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
             />
           </div>
           <div className="createEventButton">

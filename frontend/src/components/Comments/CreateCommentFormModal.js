@@ -18,11 +18,17 @@ function CreateCommentFormModal() {
   const history = useHistory();
   const ownerId = useSelector((state) => state.session.user.id);
   const [edit, setEdit] = useState(false);
-  const [comment, setComment] = useState("");
+  const [content, setContent] = useState("");
   const [valErrors, setValErrors] = useState([]);
-  const post = useSelector((state) => state.individualPost);
+  const post = useSelector((state) => state.singlePost);
   const [isEditing, setIsEditing] = useState(false);
-  //   const postId = posts[posts.id]?.Comments
+  const commentsObj = useSelector((state) => state.comments)
+  const allComments = Object.values(commentsObj)
+  const comments = allComments.filter((comment) => comment.postId === post.id)
+
+  console.log("this is post from creatcommentformmodal", post)
+  // useEffect(() => dispatch(loadOnePost(post.id)), [dispatch])
+  console.log("this is comments from createcommentformmodal", comments)
 
   const deletePost = async () => {
     // await dispatch(getAllPostsThunk());
@@ -35,6 +41,13 @@ function CreateCommentFormModal() {
     e.preventDefault();
     const commentId = e.target.id;
     await dispatch(deleteCommentThunk(commentId));
+    // if (comments.length > 0) {
+    //   dispatch(loadOnePost(post.id));
+    // } else {
+    //   dispatch(loadOnePost(post.id));
+    //   dispatch(hideModal())
+    // }
+
     dispatch(loadOnePost(post.id));
   };
 
@@ -45,19 +58,17 @@ function CreateCommentFormModal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      comment,
+      content,
       userId: ownerId,
       postId: post.id,
     };
 
     await dispatch(createCommentThunk(payload));
-    // .then((res) => {
-    //   return res;
-    // });
+  
 
     dispatch(loadOnePost(post.id));
     await dispatch(thunkGetAllPosts());
-    setComment("");
+    setContent("");
   };
 
   // const editComment = async (e) => {
@@ -71,7 +82,7 @@ function CreateCommentFormModal() {
   return (
     <div className="postModal">
       <div className="modalImageWrapper">
-        <img className="postModalImage" src={post.imgUrl} alt=""></img>
+        <img className="postModalImage" src={post?.imgUrl} alt=""></img>
       </div>
       <div className="rightSideModal">
         <div className="postModalHeader">
@@ -79,7 +90,7 @@ function CreateCommentFormModal() {
             <img className="postUserPhoto" src={post?.User?.profilePic} alt=""></img>
             <Link
               className="userLink"
-              to={`/users/${post.userId}`}
+              to={`/users/${post?.userId}`}
               onClick={() => dispatch(hideModal())}
             >
               {post?.User?.username}
@@ -89,18 +100,18 @@ function CreateCommentFormModal() {
             x
           </div>
         </div>
-        {post?.userId === ownerId ? (
+        {post?.userId === ownerId && (
           <div>
             <button onClick={deletePost}>Delete</button>
             <button value={edit} className="" onClick={editPost}>
               Edit
             </button>
           </div>
-        ) : null}
+        )}
         <ul className="commentScroll">
-          <div className="post-description">{post.description}</div>
+          <div className="post-description">{post?.description}</div>
           {post &&
-            post.Comments?.map((comment) => (
+            comments?.map((comment) => (
               <li className="postModalCommentWrapper" key={comment.id}>
                 <div className="postModalComment">
                   <div className="commentUserPhoto"></div>
@@ -108,7 +119,7 @@ function CreateCommentFormModal() {
                     <h3 className="commentUserName">
                       <Link>commentUser</Link>
                     </h3>
-                    <span className="spanComment">{comment.comment}</span>
+                    <span className="spanComment">{comment.content}</span>
                     {/* <div id={comment.id} onClick={editComment}>
                       EDIT
                     </div> */}
@@ -136,8 +147,8 @@ function CreateCommentFormModal() {
               <input
                 placeholder="Add a comment..."
                 type="text"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
               />
             </div>
             <div className="createEventButton">
