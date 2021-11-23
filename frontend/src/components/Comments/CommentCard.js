@@ -5,25 +5,40 @@ import "./CommentCard.css";
 import { Link } from "react-router-dom";
 import CreateCommentForm from "./CreateCommentForm";
 import { loadOnePost } from "../../store/singlePost";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CreateCommentFormModal from "./CreateCommentFormModal";
 import { setCurrentModal, showModal } from "../../store/modal";
+import { getAllCommentsThunk } from "../../store/comments";
 
 
 
 function CommentCard({ post }) {
     const dispatch = useDispatch();
     // const [postDetailModal, setPostDetailModal] = useState(false);
-    const numberOfComments = post?.Comments?.length;
-    const [comments, setComments] = useState({})
+    // const numberOfComments = post?.Comments?.length;
+    // const [comments, setComments] = useState({})
+    const commentsObj = useSelector((state) => state.comments)
+    const allComments = Object.values(commentsObj)
+    const numberOfComments = allComments.filter((comment) => comment.postId === post.id).length
+
+
+    useEffect(() => dispatch(getAllCommentsThunk(post.id)), [dispatch])
+    
+    // // IFFE
+    // useEffect(() => {
+    //     (()=>{
+    //       const com = dispatch(loadOnePost(post.id))
+    //       setComments(com.Comments)
+    //     })()
+    // }, []);
 
     // IFFE
     useEffect(() => {
-        (()=>{
-        const com = dispatch(loadOnePost(post.id))
-        setComments(com.Comments)
-        })()
-    }, []);
+      dispatch(loadOnePost(post.id))
+      // setComments(com.Comments)
+        
+      dispatch(getAllCommentsThunk(post.id))
+    }, [dispatch]);
 
   const handleSubmit = async () => {
       await dispatch(loadOnePost(post.id));
