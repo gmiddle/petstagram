@@ -1,0 +1,12 @@
+.create-post-button{
+    height: 20px;
+    width: 20px;
+    color: grey;
+    margin-right: 16px;
+}
+
+.create-post-button::before{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}

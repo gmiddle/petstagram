@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginForm.css';
 import { hideModal } from "../../store/modal";
+import { useHistory } from "react-router-dom";
+
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -11,6 +13,7 @@ function LoginFormPage() {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory()
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -24,6 +27,12 @@ function LoginFormPage() {
         if (data && data.errors) setErrors(data.errors);
       });
   };
+
+  const demoUser = async () => {
+    history.push('/posts')
+      dispatch(hideModal())
+    return dispatch(sessionActions.login({credential: "Demo-lition", password: 'password'}))
+  }
 
   return (
     <>
@@ -53,6 +62,7 @@ function LoginFormPage() {
           />
         </label>
         <button type="submit">Log In</button>
+        <button onClick={demoUser}>Demo User</button>
       </form>
     </>
   );

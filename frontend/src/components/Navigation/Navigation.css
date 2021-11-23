@@ -1,3 +1,148 @@
 .profile-dropdown {
   position: absolute;
 }
+
+.navWrapper {
+  width: 100%;
+  /* position: fixed; */
+  /* top: 0;
+    left: 0;
+    right: 0; */
+  height: 64px;
+  border-bottom: 1px solid lightgrey;
+  z-index: 1;
+  background-color: #231F20;
+}
+.logout-button {
+  
+  border: none;
+  background-color: #0095f6;
+  color: white;
+  border-radius: 2px;
+
+}
+
+/* .hidden {
+  display: none;
+} */
+.nav {
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.logoWrapper {
+  width: 260px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 160px;
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+}
+
+.search-results {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: 375px;
+  height: 437px;
+  overflow-y: auto;
+  margin-top: 14px;
+  margin-left: -4vw;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 12px 0px;
+  border: 0px solid #000;
+  box-shadow: 0px 0px 0px 2px #f0f0f0;
+  overflow-x: hidden;
+  z-index: 999;
+}
+
+.search-none {
+  margin-top: 187.5px;
+  align-self: center;
+  text-align: center;
+  color: #8e8e8e;
+}
+
+.search-bar {
+  width: 215px;
+  height: 28px;
+  padding: 0 12px;
+  background-color: #fafafa;
+  border-radius: 3px;
+  border: solid 1px #dbdbdb;
+  color: #8e8e8e;
+}
+
+.search-bar:focus {
+  outline: 0;
+  color: rgb(38, 38, 38);
+}
+
+.search-card {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 18px;
+  gap: 20px;
+  padding: 0 24px;
+  height: 60px;
+}
+
+.search-card:hover {
+  background-color: #fafafa;
+}
+
+.search-name {
+  color: #262626;
+  font-weight: 400;
+}
+
+.search-none {
+  margin-top: 187.5px;
+  align-self: center;
+  text-align: center;
+  color: #8e8e8e;
+}
+
+.logOutButton {
+  height: 20px;
+  width: 20px;
+  color: grey;
+}
+
+.logOutButton::before {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.profilePageNav {
+  height: 20px;
+  width: 20px;
+  color: grey;
+  margin-right: 16px;
+}
+
+.profilePageNav::before {
+  height: 20px;
+  width: 20px;
+}
+
+.homeNav {
+  height: 20px;
+  width: 20px;
+  color: grey;
+  margin-right: 16px;
+}
+
