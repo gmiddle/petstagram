@@ -16,7 +16,7 @@ const EditCommentForm = ({ comment }) => {
   const ownerId = useSelector((state) => state.session.user.id);  
   // const commentList = useSelector((state) => state.posts[post.id].Comments)
   // const filteredComments = commentList.filter((ele) => ele.postId === post.id)
-  const commentList = useSelector((state) => state.posts[post.id].Comments)
+  // const commentList = useSelector((state) => state.posts[post.id].Comments)
   
   
   const updateSetShow = (e) => {

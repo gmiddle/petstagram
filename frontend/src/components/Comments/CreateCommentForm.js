@@ -65,7 +65,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk, getAllCommentsThunk, getOneCommentThunk } from "../../store/comments";
 import { useFormik } from "formik"
 import * as yup from "yup";
-import { hideModal } from "../../store/modal";
+// import { hideModal } from "../../store/modal";
 
 
 

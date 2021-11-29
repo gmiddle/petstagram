@@ -15,3 +15,7 @@ dd {
 body {
   background-color: gray;
 }
+
+* {
+  font-family: Neue Helvetica;
+}
