@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadOnePost } from "../../store/singlePost";
 import "./EditCommentForm.css";
 import { editCommentThunk, getAllCommentsThunk, getOneCommentThunk } from "../../store/comments";
+import { useFormik } from "formik"
+import * as yup from "yup";
 
 
 const EditCommentForm = ({ comment }) => {
@@ -13,7 +15,8 @@ const EditCommentForm = ({ comment }) => {
   const [isClicked, setIsClicked] = useState(false)
   const post = useSelector((state) => state.singlePost);
 //   const myComment = useSelector((state) => state.comments)
-  const ownerId = useSelector((state) => state.session.user.id);  
+  const ownerId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user.id);  
   // const commentList = useSelector((state) => state.posts[post.id].Comments)
   // const filteredComments = commentList.filter((ele) => ele.postId === post.id)
   // const commentList = useSelector((state) => state.posts[post.id].Comments)
@@ -25,30 +28,54 @@ const EditCommentForm = ({ comment }) => {
     // dispatch(getOneCommentThunk(comment.id))
   };
 
-  const updateDetails = (e) => {
-    setEditComment(e.target.value);
-  };
+  // const updateDetails = (e) => {
+  //   setEditComment(e.target.value);
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    const payload = {
-      content: editComment,
-      id: comment.id,
-      postId: post.id
-    };
-    // console.log("this is the payload from the editcommentform", payload)
-    // dispatch(editCommentThunk(payload))
-    // .then(() => dispatch(loadOnePost(post.id)))
+  //   const payload = {
+  //     content: editComment,
+  //     id: comment.id,
+  //     postId: post.id
+  //   };
     
-    await dispatch(editCommentThunk(payload));
-    await dispatch(getAllCommentsThunk(post.id))
-    dispatch(loadOnePost(post.id))
-    // dispatch(hideModal());
-    updateSetShow();
-  };
+    
+  //   await dispatch(editCommentThunk(payload));
+  //   await dispatch(getAllCommentsThunk(post.id))
+  //   dispatch(loadOnePost(post.id))
+  //   // dispatch(hideModal());
+  //   updateSetShow();
+  // };
 
-  // console.log("this is the post from editcommentform", post.id)
+  const formik = useFormik({
+    initialValues: {
+      id: comment.id,
+      content: editComment,
+      userId: userId,
+      postId: post.id
+    },
+
+    validationSchema: yup.object({
+      content: yup.string().max(2000).required("Comment must be between 0-2000 characters!"),
+      // imgUrl: yup.string().url().min(1).max(2000).required("Must be a url!"),
+      // imgUrl: yup.string().min(0).max(2000).required("imgUrl must be between 0-2000 characters"),
+    }),
+
+    onSubmit: async (values) => {
+      await dispatch(editCommentThunk(values))
+      // .then(() => dispatch(getAllCommentsThunk()))
+      await dispatch(getAllCommentsThunk(post.id))
+      await dispatch(loadOnePost(post.id))
+      // dispatch(hideModal());
+      // setShowCommentModal(false);
+      setIsClicked(false)
+      // updateSetShow()
+    },
+  })
+
+  console.log("this is formik", formik)
 
   return (
     <div>
@@ -65,27 +92,48 @@ const EditCommentForm = ({ comment }) => {
 
       {isClicked && (
         <div>
-          <textarea
-            maxLength="200"
+          {/* <textarea
+            maxLength="2000"
             type="text"
             required
             name="editComment"
             value={editComment}
             onChange={updateDetails}
             className={`editButton ${show ? "hidden" : null}`}
-          ></textarea>
-          <button
-            onClick={handleSubmit}
-            className={`editButton ${show ? "hidden" : null}`}
-          >
-            Update Comment
-          </button>
-          <button
-            onClick={updateSetShow}
-            className={`editButton ${show ? "hidden" : null}`}
-          >
-            Cancel
-          </button>
+          ></textarea> */}
+
+          <form onSubmit={formik.handleSubmit}>
+            <div className="formField">
+              <label htmlFor="content"></label>
+              <input
+                id="content"
+                name="content"
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.content}
+                />{formik.touched.content && formik.errors.content ? (
+                  <div className="errorText">{formik.errors.content}</div>
+                ) : null}
+            </div>
+            <button
+              // onClick={handleSubmit}
+              type="submit"
+              onClick={updateSetShow}
+              className={`editButton ${show ? "hidden" : null}`}
+            >
+              Update Comment
+            </button>
+            <button
+              onClick={updateSetShow}
+              className={`editButton ${show ? "hidden" : null}`}
+            >
+              Cancel
+            </button>
+          {/* <div className="formField">
+            <button type="submit">Submit</button>
+          </div> */}
+          </form>
         </div>
       )}
     </div>

@@ -36,6 +36,7 @@ function App() {
       )} */}
       {isLoaded && (
         <Switch>
+
           <Route path="/login" >
             <LoginFormPage />
           </Route>
@@ -49,6 +50,9 @@ function App() {
             {/* <Feed /> */}
           </Route>
 
+          <Route exact path='/' >
+            {user ? <Feed /> : <LoginFormPage />}
+          </Route>
         </Switch>
       )}
       <Footer />
