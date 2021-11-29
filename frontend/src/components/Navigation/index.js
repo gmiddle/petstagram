@@ -46,7 +46,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <button className="btn btn-primary" onClick={handleLogin}>Login</button>
-        <button onClick={handleSignup}>SignUp</button>
+        <button onClick={handleSignup}>Sign Up</button>
       </>
     );
   }

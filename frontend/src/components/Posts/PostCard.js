@@ -85,9 +85,9 @@ function PostCard({ post }) {
       ></img>
       {/* </Link> */}
       <br></br>
-      <Link to={`/users/${post.userId}`}>
+      {/* <Link to={`/users/${post.userId}`}> */}
         <div>{post?.User?.username}</div>
-      </Link>
+      {/* </Link> */}
       <br></br>
       {post.description}
       <br></br>
