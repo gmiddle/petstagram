@@ -21,7 +21,7 @@ function Feed() {
       <div className="feed-container">
         {posts.map((post) => 
           <PostCard key={`post${post.id}`} post={post} />
-        )}
+        ).reverse()}
       </div>
     </>
   );

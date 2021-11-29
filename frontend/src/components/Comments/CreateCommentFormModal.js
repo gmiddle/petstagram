@@ -32,11 +32,11 @@ function CreateCommentFormModal() {
   // console.log("this is comments from createcommentformmodal", comments)
   useEffect(() => dispatch(allUsers()), [dispatch])
 
-  const deletePost = async () => {
-    // await dispatch(getAllPostsThunk());
-    dispatch(hideModal());
-    await dispatch(deletePost(post.id));
-    history.push("/posts");
+  const deletedPost = async () => {
+    await dispatch(deletePost(post?.id));
+    await dispatch(hideModal());
+    await dispatch(thunkGetAllPosts());
+    // history.push("/posts");
   };
 
   const deleteComment = async (e) => {
@@ -104,7 +104,7 @@ function CreateCommentFormModal() {
         </div>
         {post?.userId === ownerId && (
           <div>
-            <button onClick={deletePost}>Delete</button>
+            <button onClick={deletedPost}>Delete</button>
             <button value={edit} className="" onClick={editPost}>
               Edit
             </button>

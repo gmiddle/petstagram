@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadOnePost } from "../../store/singlePost";
 import "./EditCommentForm.css";
-import { editCommentThunk } from "../../store/comments";
+import { editCommentThunk, getAllCommentsThunk } from "../../store/comments";
 
 
 const EditCommentForm = ({ comment }) => {
@@ -35,12 +35,15 @@ const EditCommentForm = ({ comment }) => {
       postId: post.id
     };
     console.log("this is the payload from the editcommentform", payload)
+    // dispatch(editCommentThunk(payload))
+    // .then(() => dispatch(loadOnePost(post.id)))
+    
     await dispatch(editCommentThunk(payload));
+    await dispatch(getAllCommentsThunk(post.id))
     // comment= payload
     dispatch(loadOnePost(post.id))
     // dispatch(hideModal());
     updateSetShow();
-    
   };
 
   console.log("this is the post from editcommentform", post.id)
@@ -67,7 +70,6 @@ const EditCommentForm = ({ comment }) => {
             name="editComment"
             value={editComment}
             onChange={updateDetails}
-            placeholder="Edit Description"
             className={`editButton ${show ? "hidden" : null}`}
           ></textarea>
           <button

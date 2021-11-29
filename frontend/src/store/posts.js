@@ -135,12 +135,12 @@ export const createPostThunk = (payload) => async (dispatch) => {
   };
 
 export const deletePost = (postId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/posts/delete/${postId}`, {
+  const response = await csrfFetch(`/api/posts/${postId}`, {
     method: 'DELETE'
   });
   if (response.ok) {
     dispatch(remove(postId));
-    return postId;
+    // return postId;
   }
 }
 
@@ -159,6 +159,8 @@ export const editPost = (formData) => async (dispatch) => {
 }
 
 const postReducer = (state = {}, action) => {
+  // let newState = { ...state };
+
   switch (action.type) {
     // case GET_ONE_POST: {
     //   return action.post;
@@ -175,6 +177,11 @@ const postReducer = (state = {}, action) => {
       const newPosts = { ...state };
       delete newPosts[action.postId];
       return newPosts;
+    // case REMOVE_POST: {
+    //   newState = Object.assign({}, state);
+    //   delete newState[action.postId];
+    //   return newState;
+    // }
     default:
       return state;
   }

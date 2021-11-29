@@ -19,7 +19,7 @@ function LoginFormPage() {
 
   if (sessionUser){
     dispatch(hideModal())
-    return <Redirect to="/" />;
+    return <Redirect to="/posts" />;
   } 
 
 
