@@ -2,28 +2,34 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadOnePost } from "../../store/singlePost";
 import "./EditCommentForm.css";
-import { editCommentThunk, getAllCommentsThunk } from "../../store/comments";
+import { editCommentThunk, getAllCommentsThunk, getOneCommentThunk } from "../../store/comments";
 
 
 const EditCommentForm = ({ comment }) => {
   const dispatch = useDispatch();
-  const [editComment, setEditComment] = useState(comment.comment);
+  const [editComment, setEditComment] = useState(comment.content);
 //   const userId = useSelector((state) => state.session?.user?.id);
   const [show, setShow] = useState(true);
   const [isClicked, setIsClicked] = useState(false)
   const post = useSelector((state) => state.singlePost);
 //   const myComment = useSelector((state) => state.comments)
   const ownerId = useSelector((state) => state.session.user.id);  
+  // const commentList = useSelector((state) => state.posts[post.id].Comments)
+  // const filteredComments = commentList.filter((ele) => ele.postId === post.id)
+  const commentList = useSelector((state) => state.posts[post.id].Comments)
+  // console.log("this is the commentList", commentList)
+  // console.log("this is the filteredComments", filteredComments)
+  // console.log("this is the comment", comment)
   
-// console.log("SHOW", show)
+  
   const updateSetShow = (e) => {
     show ? setShow(false) : setShow(true);
     setIsClicked(true)
+    // dispatch(getOneCommentThunk(comment.id))
   };
 
   const updateDetails = (e) => {
     setEditComment(e.target.value);
-    
   };
 
   const handleSubmit = async (e) => {
@@ -34,19 +40,18 @@ const EditCommentForm = ({ comment }) => {
       id: comment.id,
       postId: post.id
     };
-    console.log("this is the payload from the editcommentform", payload)
+    // console.log("this is the payload from the editcommentform", payload)
     // dispatch(editCommentThunk(payload))
     // .then(() => dispatch(loadOnePost(post.id)))
     
     await dispatch(editCommentThunk(payload));
     await dispatch(getAllCommentsThunk(post.id))
-    // comment= payload
     dispatch(loadOnePost(post.id))
     // dispatch(hideModal());
     updateSetShow();
   };
 
-  console.log("this is the post from editcommentform", post.id)
+  // console.log("this is the post from editcommentform", post.id)
 
   return (
     <div>

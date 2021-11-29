@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const GET_COMMENTS = "comments/GET_COMMENTS";
+const GET_ONE_COMMENT = "comments/GET_ONE_COMMENT"
 const ADD_COMMENT = "comments/ADD_COMMENT";
 const EDIT_COMMENT = "comments/EDIT_COMMENT";
 const DELETE_COMMENT = "comments/DELETE_COMMENT";
@@ -9,6 +10,13 @@ const getComments = (comments) => {
   return {
     type: GET_COMMENTS,
     comments,
+  };
+};
+
+const getOneComment = (comment) => {
+  return {
+    type: GET_ONE_COMMENT,
+    comment,
   };
 };
 
@@ -39,6 +47,13 @@ export const getAllCommentsThunk = (id) => async (dispatch) => {
   // console.log("DATA", data)
   dispatch(getComments(data));
 };
+
+export const getOneCommentThunk = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/comments/${id}`);
+  const data = await res.json();
+  // console.log("DATA", data)
+  dispatch(getOneComment(data));
+}
 
 export const createCommentThunk = (payload) => async (dispatch) => {
   // console.log("this is the payload", payload)
@@ -94,6 +109,8 @@ export default function commentsReducer(state = initialState, action) {
         allComments[comment.id] = comment;
       });
       return { ...state, ...allComments };
+    case GET_ONE_COMMENT:
+      return { newState, ...action.comment}
     case ADD_COMMENT:
       // console.log("this is the action.comment", action.comment)
       return {
@@ -110,7 +127,6 @@ export default function commentsReducer(state = initialState, action) {
           }
         }
       }
-
       return newState;
     case DELETE_COMMENT: {
       const newState = { ...state };
