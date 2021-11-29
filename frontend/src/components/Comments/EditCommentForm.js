@@ -106,6 +106,7 @@ const EditCommentForm = ({ comment }) => {
             <div className="formField">
               <label htmlFor="content"></label>
               <input
+                // maxLength="2000"
                 id="content"
                 name="content"
                 type="text"
