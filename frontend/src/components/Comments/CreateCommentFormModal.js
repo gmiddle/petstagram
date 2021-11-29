@@ -13,6 +13,7 @@ import { loadOnePost } from "../../store/singlePost";
 import { deleteCommentThunk } from "../../store/comments";
 import EditCommentForm from "./EditCommentForm";
 import { allUsers } from "../../store/users";
+import CreateCommentForm from "./CreateCommentForm";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -154,7 +155,7 @@ function CreateCommentFormModal() {
             ))}
         </ul>
         <div className="comment-form-wrapper">
-          <form className="anyComments" onSubmit={handleSubmit}>
+          {/* <form className="anyComments" onSubmit={handleSubmit}>
             <div className="fieldDiv">
               <input
                 placeholder="Add a comment..."
@@ -163,10 +164,11 @@ function CreateCommentFormModal() {
                 onChange={(e) => setContent(e.target.value)}
               />
             </div>
-            <div className="createEventButton">
+            <div className="create-comment-button">
               <button type="submit">Post</button>
             </div>
-          </form>
+          </form> */}
+          <CreateCommentForm post={post}/>
         </div>
       </div>
     </div>

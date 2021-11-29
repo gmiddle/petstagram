@@ -17,9 +17,6 @@ const EditCommentForm = ({ comment }) => {
   // const commentList = useSelector((state) => state.posts[post.id].Comments)
   // const filteredComments = commentList.filter((ele) => ele.postId === post.id)
   const commentList = useSelector((state) => state.posts[post.id].Comments)
-  // console.log("this is the commentList", commentList)
-  // console.log("this is the filteredComments", filteredComments)
-  // console.log("this is the comment", comment)
   
   
   const updateSetShow = (e) => {

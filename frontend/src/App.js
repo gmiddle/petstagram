@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
@@ -17,6 +17,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   // const [showModal, setShowModal] = useState(false);
+  const user = useSelector((state) => state.session.user)
 
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") restoreCSRF();
@@ -44,7 +45,8 @@ function App() {
           </Route>
 
           <Route exact path='/posts' >
-            <Feed />
+            {user ? <Feed /> : <LoginFormPage />}
+            {/* <Feed /> */}
           </Route>
 
         </Switch>
@@ -55,3 +57,6 @@ function App() {
 }
 
 export default App;
+
+
+// slkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldfslkdjhalksjdfhlkasjf;kljsahdflkjsahdflkjhsldkfjhaslkdfjhlaskjdfhlkasjhdflkjsdflkjhaskldf
