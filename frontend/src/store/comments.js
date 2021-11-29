@@ -36,7 +36,7 @@ const deleteComment = (comment) => {
 export const getAllCommentsThunk = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/comments/getAll/${id}`);
   const data = await res.json();
-  console.log("DATA", data)
+  // console.log("DATA", data)
   dispatch(getComments(data));
 };
 

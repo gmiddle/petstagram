@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 import Feed from './components/Feed';
 import Modal from './components/Modal/Modal'
 import Footer from './components/Footer';
+import { restoreCSRF } from './store/csrf';
 
 
 
@@ -18,6 +19,7 @@ function App() {
   // const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    if (process.env.NODE_ENV !== "production") restoreCSRF();
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 

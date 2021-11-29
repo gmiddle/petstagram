@@ -15,12 +15,18 @@ function LoginFormPage() {
   const [errors, setErrors] = useState([]);
   const history = useHistory()
 
-  if (sessionUser) return <Redirect to="/" />;
+  // if (sessionUser) return <Redirect to="/" />;
+
+  if (sessionUser){
+    dispatch(hideModal())
+    return <Redirect to="/" />;
+  } 
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(hideModal())
+    // dispatch(hideModal())
     return dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
@@ -28,11 +34,21 @@ function LoginFormPage() {
       });
   };
 
-  const demoUser = async () => {
-    history.push('/posts')
-      dispatch(hideModal())
-    return dispatch(sessionActions.login({credential: "Demo-lition", password: 'password'}))
-  }
+  // const demoUser = async () => {
+  //   history.push('/posts')
+  //     dispatch(hideModal())
+  //   return dispatch(sessionActions.login({credential: "Demo-lition", password: 'password'}))
+  // }
+
+  const demoUser = async (e) => {
+    e.preventDefault();
+    setCredential("Demo-lition");
+    setPassword("password");
+    const demo = dispatch(
+      sessionActions.login({ credential: "Demo-lition", password: "password" })
+    );
+    return demo;
+  };
 
   return (
     <>
@@ -61,7 +77,8 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        {/* <button type="submit">Log In</button> */}
+        <button className="buttonClass" onClick={handleSubmit}>Log In</button>
         <button onClick={demoUser}>Demo User</button>
       </form>
     </>
