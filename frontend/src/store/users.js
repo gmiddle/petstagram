@@ -1,5 +1,5 @@
 import {csrfFetch} from './csrf';
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 const GET_USERS = 'users/GET_USERS'
 
 const getUsers = (users) => {

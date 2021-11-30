@@ -1,7 +1,23 @@
-.editButton{
-    margin-left:30px;
-  }
-  
-  .hidden{
-    display:none;
-  }
+.editButton {
+  background: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+button.editButton {
+  border: none;
+  height: 30px;
+  width: 60px;
+  background-color: lightgray;
+  color: black;
+  border-radius: 2px;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.updateAndCancelButtonContainer{
+  display: flex;
+}

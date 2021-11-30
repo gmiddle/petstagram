@@ -1,0 +1,35 @@
+.createPostModal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.createPostHeader{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.fields-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-img-wrapper{
+    margin-left: 5px;
+}
+
+#description {
+    margin-right: 5px;
+}
+
+.createPostButton{
+    border: none;
+    height: 30px;
+    width: 60px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 2px;
+}

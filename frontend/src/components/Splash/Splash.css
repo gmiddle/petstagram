@@ -3,7 +3,7 @@
 
 } */
   
-.splashBox {
+/* .splashBox {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,20 +11,131 @@
     height: 100vh;
     width: 100%;
     background-image: url("https://res.cloudinary.com/dxo7djnid/image/upload/v1638229226/spacestagram/spacestagram_background_splash_ghmsfn.png");
+    
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
     flex-direction: row;
     color: lightgray;
-    /* flex-wrap: wrap; */
-    /* overflow-y: scroll;
-    overflow-x: hidden; */
-}
+    
+}  */
 
-.loginSignUp-container{
+/* .loginSignUp-container{
     background-color: #231F20;
     height: 65vh;
     width: 65%;
     margin-bottom: 130px;
+} */
+
+
+/* .mainLoginPage {
+    width: 360px;
+    margin: 0 auto;
+} */
+
+.formLoginPage {
+    width: 100%;
+    position: fixed;
+    /* height: 100vh; */
+    background-color: rgb(250 250 250);
+    padding: 100px 0;
+    /* padding-bottom: -200px; */
+    background-image: url("https://res.cloudinary.com/dxo7djnid/image/upload/v1638229226/spacestagram/spacestagram_background_splash_ghmsfn.png");
+    background-size: cover;
+    background-position: 0px -200px;
+    background-repeat: no-repeat;
+
 }
 
+.formWrapper {
+    width: 100%;
+    border: 1px solid lightgray;
+    background: darkgray;
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tagline-wrapper {
+    width: 25%;
+    position: absolute;
+    top: 30%;
+    left: 50px;
+}
+
+.tagline-wrapper span {
+    font-size: 30px;
+    color: lightgray;
+    font-family: Neu Helvetica;
+}
+
+.imageWrapper {
+    width: 180px;
+    margin: 0 auto 16px auto;
+}
+
+.loginForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countableLogo {
+    width: 300px;
+    height: 100px;
+}
+
+.imageWrapper{
+    display: flex;
+    align-items: center;
+    margin-right: 155px;
+}
+
+.signUpForm {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    width: 122%;
+    background: darkgray;
+    border: 1px solid lightgray;
+    padding: 24px 0;
+}
+
+.link {
+    color: cornflowerblue;
+    font-weight: 600;
+}
+
+.loginFormInput {
+    width: 100%;
+    height: 38px;
+    border-radius: 3px;
+    display: block;
+    border: 1px solid grey;
+    color: black;
+    font-size: 14px;
+    margin: 4px 0;
+    padding: 0 8px;
+}
+
+.loginButton {
+    width: 100%;
+    background-color: lightgray;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #231F20;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    margin-top: 10px;
+    cursor: pointer;
+}
+ 

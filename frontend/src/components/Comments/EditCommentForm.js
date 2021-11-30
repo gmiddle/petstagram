@@ -88,17 +88,17 @@ const EditCommentForm = ({ comment }) => {
     <div>
       {ownerId === comment.userId ? (
                         
-        // <button
-        //   className={`editButton ${show ? null : "hidden"}`}
-        //   onClick={updateSetShow}
-        //   // disabled={isClicked}
-        // >
-        //   EDIT
-        // </button>
-        <i
-        className={`far fa-edit editButton ${show ? null : "hidden"}`}
-        onClick={updateSetShow}
-        ></i>
+        <button
+          className={`editButton ${show ? null : "hidden"}`}
+          onClick={updateSetShow}
+          // disabled={isClicked}
+        >
+          Edit
+        </button>
+        // <i
+        // className={`far fa-edit editButton ${show ? null : "hidden"}`}
+        // onClick={updateSetShow}
+        // ></i>
       ) : null }
 
       {isClicked && (
@@ -132,20 +132,26 @@ const EditCommentForm = ({ comment }) => {
                   <div className="errorText">{formik.errors.content}</div>
                 ) : null}
             </div>
-            <button
-              // onClick={handleSubmit}
-              type="submit"
-              // onClick={updateSetShow}
-              className={`editButton ${show ? "hidden" : null}`}
-            >
-              Update Comment
-            </button>
-            <button
-              onClick={updateSetShow}
-              className={`editButton ${show ? "hidden" : null}`}
-            >
-              Cancel
-            </button>
+            <div className="updateAndCancelButtonContainer">
+              <div className="updateButtonContainer">
+                <button
+                  // onClick={handleSubmit}
+                  type="submit"
+                  // onClick={updateSetShow}
+                  className={`editButton ${show ? "hidden" : null}`}
+                >
+                  Submit
+                </button>
+              </div>
+              <div className="cancelButtonContainer">
+                <button
+                  onClick={updateSetShow}
+                  className={`editButton ${show ? "hidden" : null}`}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           {/* <div className="formField">
             <button type="submit">Submit</button>
           </div> */}

@@ -19,3 +19,18 @@ body {
 * {
   font-family: Neue Helvetica;
 }
+
+.errorText{
+  display: flex;
+  color:darkred;
+  margin-left: 5px;
+}
+
+button {
+  border: none;
+  height: 30px;
+  width: 60px;
+  background-color: lightgray;
+  color: black;
+  border-radius: 2px;
+}

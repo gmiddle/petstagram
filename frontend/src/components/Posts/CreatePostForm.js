@@ -131,42 +131,48 @@ function CreatePostForm({ setShowPostModal }) {
   // </div>
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div className="formField">
-        <label htmlFor="description">Description</label>
-        <input
-          id="description"
-          name="description"
-          type="text"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.description}
-          />{formik.touched.description && formik.errors.description ? (
-            <div className="errorText">{formik.errors.description}</div>
-          ) : null}
+    <div className="createPostModal">
+      <div className="modalHeader">
+        <h2 className="createPostHeader">Create a Post</h2>
       </div>
-
-      <div className="formField">
-        <label htmlFor="imgUrl">Image Url</label>
-        <input
-          id="imgUrl"
-          name="imgUrl"
-          type="text"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.imgUrl}
-          />{formik.touched.imgUrl && formik.errors.imgUrl ? (
-            <div className="errorText">{formik.errors.imgUrl}</div>
-          ) : null}
-      </div>
-
+      <div className="fields-container">
+        <form className="createPostForm" onSubmit={formik.handleSubmit}>
+          <div className="description-input-container">
       
+            <label htmlFor="description">Description: </label>
+            <input
+              id="description"
+              name="description"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.description}
+              />{formik.touched.description && formik.errors.description ? (
+                <div className="errorText">{formik.errors.description}</div>
+              ) : null}
+          </div>
+{" "}
+          <div className="add-img-wrapper">
+            <label className="addPostImageLabel" htmlFor="imgUrl">Image Url: {" "}</label>
+            <input
+              className="addPostImageInput"
+              id="imgUrl"
+              name="imgUrl"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.imgUrl}
+              />{formik.touched.imgUrl && formik.errors.imgUrl ? (
+                <div className="errorText">{formik.errors.imgUrl}</div>
+              ) : null}
+          </div>
+        <div className="formField">
+          <button className="createPostButton" type="submit">Submit</button>
+        </div>
+        </form>
 
-    <div className="formField">
-      <button type="submit">Submit</button>
+      </div>
     </div>
-    </form>
-
   )
   
 }

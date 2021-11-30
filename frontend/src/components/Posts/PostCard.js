@@ -34,7 +34,7 @@
 
 // export default PostCard;
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./PostCard.css";
@@ -63,8 +63,6 @@ function PostCard({ post }) {
       }
     };
 
-
-
     useEffect(() => dispatch(getAllCommentsThunk(post.id)), [dispatch])
 
     const handleSubmit = async () => {
@@ -75,6 +73,7 @@ function PostCard({ post }) {
 
   return (
     <div className="post-container">
+      <div>{post?.User?.username}</div>
       <br></br>
       {/* <Link key={post.id} to={`/posts/${post.id}`}> */}
       <img
@@ -86,14 +85,21 @@ function PostCard({ post }) {
       {/* </Link> */}
       <br></br>
       {/* <Link to={`/users/${post.userId}`}> */}
-        <div>{post?.User?.username}</div>
       {/* </Link> */}
       <br></br>
-      {post.description}
+      <div className="post-description">Description: {" "}
+        {post.description}
+      </div>
       <br></br>
-      <CreateCommentForm post={post} />
-      {lastComment()}
-      <CommentCard post={post} />
+      <div>
+        <div>
+          <CreateCommentForm post={post} />
+        </div>
+        <div>
+          {lastComment()}
+          <CommentCard post={post} />
+        </div>
+      </div>
     </div>
   );
 }

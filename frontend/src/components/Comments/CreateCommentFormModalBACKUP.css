@@ -1,86 +1,78 @@
 .postModal {
-    /* flex: 1 1 100%; */
-    background-color: darkgray;
-    display: flex;
-    /* grid-template-columns: 1fr 1fr; */
-    max-height: 100%;
+    /* position: absolute;
+    top: 0; */
+    flex: 1 1 100%;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* fraction = equal width columns = 50% 50% */
+    /* column-gap: 16px; */
 }
   
-.postCaption {
-  word-break: break-word;
-}
-
 .modalImageWrapper {
   width: 100%;
   height: 100%;
-  flex: 0 0 50%;
   display: flex;
   align-items: center;
   overflow: hidden;
   justify-content: center;
-}
-
-.user-edit-buttons-wrapper {
-  flex: 0 0 auto;
-  margin-right: 20px;
+  background-color: white;
 }
 
 .postModalImage {
+  /* width: 100%; */
   max-width: 100%;
   max-height: 100%;
   display: block;
   height: inherit;
-
 }
 
 .rightSideModal {
-  
+  background-color: white;
   display: flex;
   flex-direction: column;
 }
 
 .postModalHeader {
-  max-width: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid lightgray;
+  /* margin-bottom: 24px; */
   padding: 14px 16px;
 }
 
 .postUser {
   display: flex;
   align-items: center;
-  flex: 1 1 auto;
 }
-
+  
 .postUserPhoto {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  /* background: black; */
   margin-right: 16px;
 }
 
 .userLink {
-
+  /* font-size: 20px; */
   font-weight: 500;
+
 }
 
 .closeModal {
+  /* width: 32px; */
+  /* justify-content: flex-end; */
   height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  flex: 0 0 auto;
 }
 
-.post-content-wrapper {
-  display: grid;
-  grid-template-areas:
-    "username buttons"
-    "comment buttons";
-}
+  
 
 .postModalCommentWrapper {
   width: 100%;
@@ -89,20 +81,7 @@
 .postModalComment {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  margin: 0;
-}
-
-.editAndDeleteContainer{
-  display: flex;
-}
-
-.editCommentFormButtonContainer{
-  margin-left: -10px;
-}
-
-.deleteCommentButtonContainer{
-  margin-left: 5px;
+  flex-direction: row;
 }
 
 .commentUserPhoto {
@@ -110,74 +89,47 @@
   height: 32px !important;
   margin-right: 18px;
   border-radius: 50%;
-  
+  background-color: black;
 }
 
 .commentScroll {
   padding: 16px;
-  max-width: 100%;
+  width: 100%;
   height: 100%;
-  overflow-y: hidden;
+  overflow-y: scroll;
   flex-grow: 1;
   list-style-type: none;
   padding-left: 16px;
 }
 
-.commentScroll:hover {
-  overflow-y: scroll;
-}
-
 .commentUserName {
   font-size: 14px;
   font-weight: 600;
-  grid-area: username;
 }
 
 .spanComment {
-  overflow: auto;
   font-size: 14px;
   word-wrap: break-word;
-  grid-area: comment;
-  overflow-wrap: break-word;
-}
-
-.buttons-wrapper {
-  grid-area: buttons;
-  display: flex;
 }
 
 
 .deleteComment {
-  border: none;
-  height: 30px;
-  width: 60px;
-  background-color: lightgray;
-  color: black;
-  border-radius: 2px;
+  cursor: pointer;
 }
 
-.comment-form-wrapper{
-  display: flex;
-  justify-content: center;
-
+.comment-form-wrapper {
+  background-color: white;
 }
 
 .comment-form-wrapper form {
   display: flex;
+  background-color: white;
 }
 
 .comment-form-wrapper form .fieldDiv {
   flex: 1 1 auto;
 }
 
-.comment-form-wrapper form .createCommentButton {
+.comment-form-wrapper form .createEventButton {
   flex: 0 0 50px;
-}
-
-.editPostButton{
-  margin-left: 15px !important;
-}
-
-.deletePostButton{
-  margin-left: 5px !important;
 }

@@ -28,6 +28,7 @@ function CreateCommentFormModal() {
   const allComments = Object.values(commentsObj)
   const comments = allComments.filter((comment) => comment.postId === post.id)
   const users = useSelector((state) => state.users)
+  const userName = useSelector((state) => state.posts[post.id]?.User?.username)
 
   // console.log("this is post from creatcommentformmodal", post)
   // console.log("this is comments from createcommentformmodal", comments)
@@ -90,14 +91,17 @@ function CreateCommentFormModal() {
       <div className="rightSideModal">
         <div className="postModalHeader">
           <div className="postUser">
-            <img className="postUserPhoto" src={post?.User?.profilePic} alt=""></img>
+            {/* <img className="postUserPhoto" src={post?.User?.profilePic} alt=""></img>
             <Link
               className="userLink"
               to={`/users/${post?.userId}`}
               onClick={() => dispatch(hideModal())}
-            >
-              {post?.User?.username}
-            </Link>
+            > */}
+            <div>
+              {userName}
+
+            </div>
+            {/* </Link> */}
           </div>
           <div className="closeModal" onClick={() => dispatch(hideModal())}>
             x
@@ -105,14 +109,14 @@ function CreateCommentFormModal() {
         </div>
         {post?.userId === ownerId && (
           <div>
-            <button onClick={deletedPost}>Delete</button>
-            <button value={edit} className="" onClick={editPost}>
-              Edit
+            <button value={edit} className="editPostButton" onClick={editPost}>
+              Edit Post
             </button>
+            <button className="deletePostButton" onClick={deletedPost}>Delete Post</button>
           </div>
         )}
         <ul className="commentScroll">
-          <div className="post-description">{post?.description}</div>
+          <div className="post-description">Description: {post?.description}</div>
           {post &&
             comments?.map((comment) => (
               <li className="postModalCommentWrapper" key={comment.id}>
@@ -133,18 +137,19 @@ function CreateCommentFormModal() {
                     {/* <div id={comment.id} onClick={editComment}>
                       EDIT
                     </div> */}
-                    <div>
-                      <EditCommentForm comment={comment} />
-                      {ownerId === comment.userId ? (
-                        <button
-                          className="deleteComment"
-                          id={comment.id}
-                          onClick={deleteComment}
-                        >
-                          DELETE
-                        </button>
-
-                      ) : null }
+                    <div className="editAndDeleteContainer">
+                      <div className="editCommentFormButtonContainer">
+                        <EditCommentForm comment={comment} />
+                      </div>
+                      <div className="deleteCommentButtonContainer">
+                        {ownerId === comment.userId ? (
+                          <button
+                            className="deleteComment"
+                            id={comment.id}
+                            onClick={deleteComment}
+                          > Delete </button>
+                        ) : null }
+                      </div>
                     </div>
 
                     {/* <img className="editIcon" scr="https://res.cloudinary.com/dis83syog/image/upload/v1637344420/Countable/download_dhs0ho.png" alt=""></img> */}

@@ -8,6 +8,7 @@
     padding: 32px 0;
     /* position: absolute; */
     background-color: darkgray;
+    border-top: 1px solid lightgrey;
 }
 
 .footer-div a img {

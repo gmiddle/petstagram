@@ -32,7 +32,7 @@ function CreatePostModal() {
   }
 
   return (
-    <div className="create-event-container">
+    <div className="create-post-container">
       <div>{sessionLinks}</div>
       {showPostModal && (
         <Modal onClose={() => setShowPostModal(false)}>

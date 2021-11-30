@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import './LoginForm.css';
 import { hideModal } from "../../store/modal";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function LoginFormPage() {
@@ -84,5 +85,73 @@ function LoginFormPage() {
     </>
   );
 }
+
+
+  // return (
+  //   <div className="formLoginPage">
+  //     <div className="tagline-wrapper">
+  //       <span>
+  //         Countable - helping you rate the quality of local services and hold
+  //         local officials to account
+  //       </span>
+  //     </div>
+  //     <div className="mainLoginPage">
+  //       <div className="formWrapper">
+  //         <div className="imageWrapper">
+  //           <img
+  //             className="countableLogo"
+  //             src="https://res.cloudinary.com/dis83syog/image/upload/v1636988652/Countable/Screen_Shot_2021-11-15_at_9.44.55_AM_eoweib.png"
+  //             alt=""
+  //           ></img>
+  //         </div>
+  //         <form className="loginForm" onSubmit={handleSubmit}>
+  //           <ul>
+  //             {errors.map((error, idx) => (
+  //               <li key={idx}>{error}</li>
+  //             ))}
+  //           </ul>
+  //           <input
+  //             className="loginFormInput"
+  //             placeholder="Email"
+  //             type="email"
+  //             autoComplete="off"
+  //             value={credential}
+  //             onChange={(e) => setCredential(e.target.value)}
+  //             //   required
+  //           />
+  //           <input
+  //             className="loginFormInput"
+  //             placeholder="Password"
+  //             autoComplete="off"
+  //             type="password"
+  //             value={password}
+  //             onChange={(e) => setPassword(e.target.value)}
+  //             //   required
+  //           />
+  //           <button className="loginButton" type="submit">
+  //             Log In
+  //           </button>
+  //           <button className="loginButton" onClick={demoUser}>
+  //             Demo User
+  //           </button>
+  //           {/* <button className="loginButton" onClick={demoUserTwo}>
+  //             Demo User 2
+  //           </button> */}
+  //         </form>
+  //       </div>
+  //       <div className="signUpForm">
+  //         <p>
+  //           {" "}
+  //           Don't have an account?&nbsp;
+  //           <Link className="link" to="/signup">
+  //             Sign up
+  //           </Link>
+  //         </p>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
+// }
+
 
 export default LoginFormPage;
