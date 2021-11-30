@@ -11,6 +11,7 @@ import Modal from './components/Modal/Modal'
 import Footer from './components/Footer';
 import { restoreCSRF } from './store/csrf';
 import Splash from './components/Splash';
+import Handle404 from './components/Handle404';
 
 
 
@@ -53,7 +54,7 @@ function App() {
             {user ? <Feed /> : <Splash />}
             {/* <Feed /> */}
           </Route>
-
+          <Handle404 />
         </Switch>
       )}
       <Footer />
