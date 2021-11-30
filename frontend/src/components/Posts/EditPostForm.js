@@ -107,6 +107,7 @@ import { loadOnePost } from "../../store/singlePost";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { thunkGetAllPosts } from "../../store/posts";
+import "./EditPostForm.css"
 
 const EditPostForm = ({ setIsEditing }) => {
   const dispatch = useDispatch();
@@ -138,11 +139,12 @@ const EditPostForm = ({ setIsEditing }) => {
   return (
     <div className="createPostModal">
       <div className="modalHeader">
-        <h2 className="createPostHeader">Update</h2>
+        <h2 className="createPostHeader">Edit Post</h2>
+        <h2>Description</h2>
       </div>
-      <div>
+      <div className="edit-post-container">
         <div className="closeModal" onClick={() => dispatch(hideModal())}>
-          x
+          {/* X */}
         </div>
         <form className="createPostContainer" onSubmit={formik.handleSubmit}>
           <div className="fieldDiv">

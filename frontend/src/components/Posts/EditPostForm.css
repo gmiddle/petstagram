@@ -1,0 +1,19 @@
+.createPostModal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.closeModal{
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+.edit-post-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

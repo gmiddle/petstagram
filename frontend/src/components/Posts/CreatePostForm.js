@@ -85,6 +85,7 @@ import { loadOnePost } from "../../store/singlePost";
 import { useFormik } from "formik"
 import * as yup from "yup";
 import { hideModal } from "../../store/modal";
+import "./CreatePostForm.css"
 
 
 

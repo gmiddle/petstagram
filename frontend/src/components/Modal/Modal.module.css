@@ -16,9 +16,9 @@
   }
   
   .modalContent {
-    width: 750px;
-    height: 650px;
-    background-color: lightgray;
+    width: 45%;
+    /* height: 45%px; */
+    background-color: darkgray;
     position: fixed;
     display: flex;
     flex-direction: row;
