@@ -10,6 +10,8 @@ import Feed from './components/Feed';
 import Modal from './components/Modal/Modal'
 import Footer from './components/Footer';
 import { restoreCSRF } from './store/csrf';
+import Splash from './components/Splash';
+import Handle404 from './components/Handle404';
 
 
 
@@ -36,6 +38,9 @@ function App() {
       )} */}
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            { user ? <Feed /> : <Splash/> }
+          </Route>
 
           <Route path="/login" >
             <LoginFormPage />
@@ -46,13 +51,10 @@ function App() {
           </Route>
 
           <Route exact path='/posts' >
-            {user ? <Feed /> : <LoginFormPage />}
+            {user ? <Feed /> : <Splash />}
             {/* <Feed /> */}
           </Route>
-
-          <Route exact path='/' >
-            {user ? <Feed /> : <LoginFormPage />}
-          </Route>
+          <Handle404 />
         </Switch>
       )}
       <Footer />

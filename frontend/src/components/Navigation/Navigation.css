@@ -8,26 +8,26 @@
   /* top: 0;
     left: 0;
     right: 0; */
-  height: 64px;
+  height: 90px;
   border-bottom: 1px solid lightgrey;
   z-index: 1;
   background-color: #231F20;
 }
-.logout-button {
+/* .logout-button {
   
   border: none;
   background-color: #0095f6;
   color: white;
   border-radius: 2px;
 
-}
+} */
 
 /* .hidden {
   display: none;
 } */
 .nav {
   padding: 0 32px;
-  height: 64px;
+  height: 90px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +42,7 @@
 }
 
 .logo {
-  width: 160px;
+  width: 100%;
 }
 
 .actionButtons {
@@ -145,4 +145,23 @@
   color: grey;
   margin-right: 16px;
 }
+
+.nav-button{
+  border: none;
+  height: 30px;
+  width: 60px;
+  background-color: lightgray;
+  color: black;
+  border-radius: 2px;
+}
+
+/* .nav-button:hover {
+  border: none;
+  height: 30px;
+  width: 60px;
+  outline: red 2px;
+  background-color: lightgray;
+  color: black;
+  border-radius: 2px;
+} */
 

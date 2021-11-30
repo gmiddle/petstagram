@@ -22,11 +22,18 @@ const EditCommentForm = ({ comment }) => {
   // const commentList = useSelector((state) => state.posts[post.id].Comments)
   
   
+  // const updateSetShow = (e) => {
+  //   show ? setShow(false) : setShow(true);
+  //   setIsClicked(true)
+  //   // dispatch(getOneCommentThunk(comment.id))
+  // };
   const updateSetShow = (e) => {
-    show ? setShow(false) : setShow(true);
-    setIsClicked(true)
-    // dispatch(getOneCommentThunk(comment.id))
+    if (!formik.errors.comment) {
+      show ? setShow(false) : setShow(true);
+      setIsClicked(true);
+    }
   };
+
 
   // const updateDetails = (e) => {
   //   setEditComment(e.target.value);
@@ -53,29 +60,29 @@ const EditCommentForm = ({ comment }) => {
     initialValues: {
       id: comment.id,
       content: editComment,
-      userId: userId,
-      postId: post.id
+      // userId: userId,
+      // postId: post.id
     },
 
     validationSchema: yup.object({
-      content: yup.string().max(2000).required("Comment must be between 0-2000 characters!"),
+      content: yup.string().min(1).max(2000).required("Comment must be between 1-2000 characters!"),
       // imgUrl: yup.string().url().min(1).max(2000).required("Must be a url!"),
       // imgUrl: yup.string().min(0).max(2000).required("imgUrl must be between 0-2000 characters"),
     }),
 
     onSubmit: async (values) => {
       await dispatch(editCommentThunk(values))
-      // .then(() => dispatch(getAllCommentsThunk()))
       await dispatch(getAllCommentsThunk(post.id))
       await dispatch(loadOnePost(post.id))
+      setIsClicked(false)
+      // .then(() => dispatch(getAllCommentsThunk()))
       // dispatch(hideModal());
       // setShowCommentModal(false);
-      setIsClicked(false)
-      // updateSetShow()
+      updateSetShow()
     },
   })
 
-  console.log("this is formik", formik)
+  // console.log("this is formik", formik)
 
   return (
     <div>
@@ -86,8 +93,12 @@ const EditCommentForm = ({ comment }) => {
           onClick={updateSetShow}
           // disabled={isClicked}
         >
-          EDIT
+          Edit
         </button>
+        // <i
+        // className={`far fa-edit editButton ${show ? null : "hidden"}`}
+        // onClick={updateSetShow}
+        // ></i>
       ) : null }
 
       {isClicked && (
@@ -104,33 +115,43 @@ const EditCommentForm = ({ comment }) => {
 
           <form onSubmit={formik.handleSubmit}>
             <div className="formField">
-              <label htmlFor="content"></label>
-              <input
+              {/* <label htmlFor="content"></label> */}
+              <textarea
                 // maxLength="2000"
+                // required
                 id="content"
                 name="content"
                 type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.content}
-                />{formik.touched.content && formik.errors.content ? (
+                placeholder="Edit Comment"
+                className={`editButton ${show ? "hidden" : null}`}
+                ></textarea>
+                {formik.touched.content && formik.errors.content ? (
                   <div className="errorText">{formik.errors.content}</div>
                 ) : null}
             </div>
-            <button
-              // onClick={handleSubmit}
-              type="submit"
-              onClick={updateSetShow}
-              className={`editButton ${show ? "hidden" : null}`}
-            >
-              Update Comment
-            </button>
-            <button
-              onClick={updateSetShow}
-              className={`editButton ${show ? "hidden" : null}`}
-            >
-              Cancel
-            </button>
+            <div className="updateAndCancelButtonContainer">
+              <div className="updateButtonContainer">
+                <button
+                  // onClick={handleSubmit}
+                  type="submit"
+                  // onClick={updateSetShow}
+                  className={`editButton ${show ? "hidden" : null}`}
+                >
+                  Submit
+                </button>
+              </div>
+              <div className="cancelButtonContainer">
+                <button
+                  onClick={updateSetShow}
+                  className={`editButton ${show ? "hidden" : null}`}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           {/* <div className="formField">
             <button type="submit">Submit</button>
           </div> */}

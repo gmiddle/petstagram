@@ -65,6 +65,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk, getAllCommentsThunk, getOneCommentThunk } from "../../store/comments";
 import { useFormik } from "formik"
 import * as yup from "yup";
+import "./CreateCommentForm.css"
 // import { hideModal } from "../../store/modal";
 
 
@@ -117,6 +118,7 @@ function CreateCommentForm({ post }) {
       <div className="formField">
         <label htmlFor="content"></label>
         <input
+          className="addComment-input"
           id="content"
           name="content"
           type="text"
@@ -127,6 +129,7 @@ function CreateCommentForm({ post }) {
           />{formik.touched.content && formik.errors.content ? (
             <div className="errorText">{formik.errors.content}</div>
           ) : null}
+        <button type="submit" className="comment-submit-button">Submit</button>
       </div>
 
       {/* <div className="formField">
@@ -142,12 +145,6 @@ function CreateCommentForm({ post }) {
             <div className="errorText">{formik.errors.imgUrl}</div>
           ) : null}
       </div> */}
-
-      
-
-    <div className="formField">
-      <button type="submit">Submit</button>
-    </div>
     </form>
 
   )
