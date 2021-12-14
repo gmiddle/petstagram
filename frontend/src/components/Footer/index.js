@@ -17,6 +17,8 @@ function Footer (){
             alt="linkedInLogo"
           />
         </a>
+        {/* <a href="https://www.linkedin.com/in/garrettmiddleton/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+				<a href="https://github.com/gmiddle" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a> */}
       </div>
     </div>
   );
