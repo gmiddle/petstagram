@@ -73,7 +73,7 @@ function PostCard({ post }) {
 
   return (
     <div className="post-container">
-      <div>{post?.User?.username}</div>
+      <div className="post-username">{post?.User?.username}</div>
       <br></br>
       {/* <Link key={post.id} to={`/posts/${post.id}`}> */}
       <img
@@ -92,10 +92,10 @@ function PostCard({ post }) {
       </div>
       <br></br>
       <div>
-        <div>
+        <div className="CreateCommentForm-container">
           <CreateCommentForm post={post} />
         </div>
-        <div>
+        <div className="post-details-container">
           {lastComment()}
           <CommentCard post={post} />
         </div>
