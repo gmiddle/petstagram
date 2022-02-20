@@ -146,9 +146,7 @@ function CreateCommentForm({ post }) {
           ) : null}
       </div> */}
     </form>
-
   )
-  
 }
 
 export default CreateCommentForm;
