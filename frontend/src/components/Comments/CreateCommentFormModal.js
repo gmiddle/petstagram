@@ -178,6 +178,7 @@ function CreateCommentFormModal() {
       </div>
     </div>
   );
+  
 }
 
 export default CreateCommentFormModal;
