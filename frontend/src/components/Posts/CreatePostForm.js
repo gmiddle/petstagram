@@ -171,11 +171,9 @@ function CreatePostForm({ setShowPostModal }) {
           <button className="createPostButton" type="submit">Submit</button>
         </div>
         </form>
-
       </div>
     </div>
   )
-  
 }
 
 export default CreatePostForm;

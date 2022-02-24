@@ -182,7 +182,6 @@ function Navigation({ isLoaded }) {
   } else {
     return null;
   }
-
   return <div>{isLoaded && navBar}</div>;
 }
 

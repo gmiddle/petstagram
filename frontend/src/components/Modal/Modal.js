@@ -30,5 +30,4 @@ export default function Modal() {
 
 
 // call setCurrentModal on the GET for the form and showModal()
-
 // call hideModal() on the submit
